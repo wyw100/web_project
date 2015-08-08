@@ -22,6 +22,28 @@
           <groupId>org.apache.tomcat.maven</groupId>
           <artifactId>tomcat6-maven-plugin</artifactId>
           <version>2.2</version>
+          <configuration>
+          	<path>/web_project</path>
+          	 <server>tomcat-development-server</server>
+   			 <port>9968</port>
+   			 <fork>true</fork>
+          </configuration>
+           <executions>
+        <execution>
+            <id>start-tomcat</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+                <goal>run</goal>
+            </goals>
+        </execution>
+        <execution>
+            <id>stop-tomcat</id>
+            <phase>post-integration-test</phase>
+            <goals>
+                <goal>shutdown</goal>
+            </goals>
+        </execution>
+    </executions>
         </plugin>
       </plugins>
   </build>
